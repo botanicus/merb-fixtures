@@ -2,6 +2,7 @@ require 'rubygems'
 require 'rake/gempackagetask'
 require 'rubygems/specification'
 require 'date'
+require 'base64'
 require 'merb-core/version'
 require 'merb-core/tasks/merb_rake_helper'
 

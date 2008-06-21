@@ -1,12 +1,17 @@
 === About ===
-Fixtures is Merb/DataMapper plugin. Is quite different than Rails fixtures:
-1) Fixtures are written in Ruby, not in YAML, so you can easy
-2) Fixtures aren't just for testing, but they are useful for development and [dokonce] for migrations
+Fixtures is Merb plugin which provides fixture system for Merb. At this time only DataMapper is supported. Is quite different than Rails fixtures:
+  1) Fixtures are written in Ruby, not in YAML, so it's more powerful than YAML one. For example it's much easier to add HABTM relationships.
+  2) Fixtures aren't just for testing, but they are useful for development and [dokonce] for migrations
 
 === Setup ===
-git clone
+git clone git@github.com:botanicus/merb-fixtures.git
+rake install
+
+# your-app/config/init.rb
+Merb.push_path(:fixtures, "app/fixtures/", "*.rb")
 
 === Usage ===
+First you must write a fixture:
 # app/fixtures/author.rb
 fixture_for(Author, :botanicus) do
   self.first_name = "Jakub"
@@ -16,8 +21,11 @@ fixture_for(Author, :botanicus) do
   self.posts      = [ ... ]
 end
 
+Now you can use it - from your specs or just from merb console:
+# Get fixture named :botanicus
 Author.fixture(:botanicus)
 => #<Author last_name="Šťastný" homepage="http://botablog.cz" first_name="Jakub" nickname="Botanicus">
 
+# Get all the author's fixtures
 Author.fixtures
 => [#<Author last_name="Šťastný" homepage="http://botablog.cz" first_name="Jakub" nickname="Botanicus">]
