@@ -1,2 +1,2 @@
-$TESTING=true
-$:.push File.join(File.dirname(__FILE__), '..', 'lib')
+$TESTING = true
+$:.push File.join(File.dirname(__FILE__), '..', 'lib', 'merb-fixtures')
