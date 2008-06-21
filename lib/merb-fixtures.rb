@@ -8,11 +8,11 @@ if defined?(Merb::Plugins)
   
   Merb::BootLoader.before_app_loads do
     # require code that must be loaded before the application
-    require Merb.root / "lib/fixtures/lib/merb-fixtures/fixture.rb"
+    require "merb-fixtures/fixture.rb"
     # TODO: use default ORM
-    require Merb.root / "lib/fixtures/lib/merb-fixtures/datamapper.rb"
-    require Merb.root / "lib/fixtures/lib/merb-fixtures/kernel.rb"
-    require Merb.root / "lib/fixtures/lib/merb-fixtures/helpers.rb"
+    require "merb-fixtures/datamapper.rb"
+    require "merb-fixtures/kernel.rb"
+    require "merb-fixtures/helpers.rb"
   end
   
   Merb::BootLoader.after_app_loads do
