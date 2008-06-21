@@ -1,0 +1,23 @@
+=== About ===
+Fixtures is Merb/DataMapper plugin. Is quite different than Rails fixtures:
+1) Fixtures are written in Ruby, not in YAML, so you can easy
+2) Fixtures aren't just for testing, but they are useful for development and [dokonce] for migrations
+
+=== Setup ===
+git clone
+
+=== Usage ===
+# app/fixtures/author.rb
+fixture_for(Author, :botanicus) do
+  self.first_name = "Jakub"
+  self.last_name  = "Šťastný"
+  self.nickname   = "Botanicus"
+  self.homepage   = "http://botablog.cz"
+  self.posts      = [ ... ]
+end
+
+Author.fixture(:botanicus)
+=> #<Author last_name="Šťastný" homepage="http://botablog.cz" first_name="Jakub" nickname="Botanicus">
+
+Author.fixtures
+=> [#<Author last_name="Šťastný" homepage="http://botablog.cz" first_name="Jakub" nickname="Botanicus">]
