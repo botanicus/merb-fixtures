@@ -14,6 +14,7 @@ class Fixture
     return @fixtures[name] #rescue nil
   end
   
+  # FIXME: has DM objects <=> ?
   def objects
     @fixtures.values.sort
   end

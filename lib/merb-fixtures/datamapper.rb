@@ -1,3 +1,5 @@
+require "merb-fixtures/fixture"
+
 module DataMapper
   module Resource
     def self.included(base)
