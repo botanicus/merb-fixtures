@@ -1,6 +1,8 @@
-namespace :fixtures do
-  desc "Do something for fixtures"
-  task :default do
-    puts "fixtures doesn't do anything"
+namespace :db do
+  namespace :fixtures do
+    desc "Load all fixtures to the database"
+    task :load do
+      puts("Not implemented yet.")
+    end
   end
 end
