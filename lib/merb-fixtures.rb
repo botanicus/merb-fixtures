@@ -19,5 +19,5 @@ if defined?(Merb::Plugins)
     # code that can be required after the application loads
   end
   
-  Merb::Plugins.add_rakefiles "fixtures/merbtasks"
+  Merb::Plugins.add_rakefiles "merb-fixtures/merbtasks"
 end
