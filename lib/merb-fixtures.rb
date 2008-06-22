@@ -21,6 +21,13 @@ if defined?(Merb::Plugins)
 
   Merb::BootLoader.after_app_loads do
     # require code that must be loaded before the application
+    unless Merb.env?("production")
+      if File.exist?(Merb.root / "app" / "fixtures")
+        Dir["#{Merb.root}/app/fixtures/*.rb"].each do |file|
+          require file
+        end
+      end
+    end
   end
   
   Merb::Plugins.add_rakefiles "merb-fixtures/merbtasks"
