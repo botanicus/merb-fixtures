@@ -4,7 +4,7 @@ if defined?(Merb::Plugins)
   # Merb gives you a Merb::Plugins.config hash 
   # ...feel free to put your stuff in your piece of it
   Merb::Plugins.config[:fixtures] = {
-    :chickens => false
+    :directory => Merb.root / "app" / "fixtures"
   }
   
   # Warning: do NOT put this requires into Merb::BootLoader!
@@ -23,7 +23,7 @@ if defined?(Merb::Plugins)
     # require code that must be loaded before the application
     unless Merb.env?("production")
       if File.exist?(Merb.root / "app" / "fixtures")
-        Dir["#{Merb.root}/app/fixtures/*.rb"].each do |file|
+        Dir[Merb::Plugins.config[:fixtures] / "*.rb"].each do |file|
           require file
         end
       end

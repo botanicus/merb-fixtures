@@ -8,12 +8,18 @@ git clone git@github.com:botanicus/merb-fixtures.git
 cd merb-fixtures
 rake install
 
-# your-app/config/init.rb
+# config/init.rb
 Merb::BootLoader.after_app_loads do
   # this gem MUST be loaded after your application
   # is ready, because it use your models
   dependency 'merb-fixtures'
 end
+
+By default, fixtures folder is app/fixtures. If you like to puts your fixtures on other place, feel free to change it in your init.rb:
+# config/init.rb
+Merb::Plugins.config[:fixtures] = {
+  :directory => Merb.root / "app" / "fixtures"
+}
 
 === Writing fixtures ===
 First you must write a fixture:
