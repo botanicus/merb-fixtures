@@ -9,8 +9,16 @@ cd merb-fixtures
 rake install
 
 # your-app/config/init.rb
-Merb.push_path(:fixtures, "app/fixtures/", "*.rb")
-# FIXME: autoload needed!
+Merb::BootLoader.after_app_loads do
+  # this gem MUST be loaded after your application
+  # is ready, because it use your models
+  dependency 'merb-fixtures'
+  unless Merb.env?("production")
+    Dir["#{Merb.root}/app/fixtures/*.rb"].each do |file|
+      require file
+    end
+  end
+end
 
 === Writing fixtures ===
 First you must write a fixture:
