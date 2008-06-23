@@ -12,6 +12,10 @@ describe Fixture do
     @fixture.load(:other_author).should eql(@botanicus)
   end
   
+  describe ".all" do
+    it "should returns array of each models which has one or more fixtures"
+  end
+  
   describe "#load" do
     before(:each) do
       @fixture.create(:botanicus, @botanicus)
