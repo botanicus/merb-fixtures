@@ -8,10 +8,6 @@ class Author
   def initialize
     @created_at = Time.now
   end
-  
-  def <=>(other)
-    self.created_at <=> other.created_at
-  end
 end
 
 describe "<model>" do

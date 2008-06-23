@@ -23,7 +23,7 @@ if defined?(Merb::Plugins)
     # require code that must be loaded before the application
     unless Merb.env?("production")
       if File.exist?(Merb.root / "app" / "fixtures")
-        Dir[Merb::Plugins.config[:fixtures] / "*.rb"].each do |file|
+        Dir[Merb::Plugins.config[:fixtures][:directory] / "*.rb"].each do |file|
           require file
         end
       end

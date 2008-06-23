@@ -5,7 +5,7 @@ module DataMapper
     def self.included(base)
       base.extend(ClassMethods)
     end
-
+    
     module ClassMethods
       # Get fixture:
       # Post.fixture(:botanicus)
