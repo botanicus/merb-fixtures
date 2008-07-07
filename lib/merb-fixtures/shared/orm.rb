@@ -4,7 +4,7 @@ module Merb
     module ORM
       def self.models
         ObjectSpace.each_object(Class) do |klass|
-          case ORM
+          case ::ORM
           when :datamapper
             if klass.included_modules.include?(DataMapper::Resource)
               models.push(klass)

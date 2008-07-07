@@ -1,1 +1,1 @@
-DataMapper::Resource.send(:include, Merb::Fixtures)
+DataMapper::Resource.send(:include, Merb::Fixtures::Extensions)
