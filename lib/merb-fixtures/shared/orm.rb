@@ -33,6 +33,14 @@ module Merb
         end
         return models
       end
+      
+      def self.task(taskname)
+        case ::ORM
+        when :datamapper   : "dm:db:fixtures:#{taskname}"
+        when :sequel       : "sequel:db:fixtures:#{taskname}"
+        when :activerecord : "db:fixtures:#{taskname}"
+        end
+      end
     end
   end
 end

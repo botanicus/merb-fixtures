@@ -1,3 +1,2 @@
-- ActiveRecord and Sequel support
 - Documentation
-- Do autoloading configurable as is normal in Merb-way
+- Tasks doen't work
