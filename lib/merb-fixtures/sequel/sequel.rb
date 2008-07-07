@@ -1,0 +1,1 @@
+Sequel::Model.send(:include, Merb::Fixtures)

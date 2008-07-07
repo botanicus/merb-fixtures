@@ -9,11 +9,12 @@ if defined?(Merb::Plugins)
   
   # Warning: do NOT put this requires into Merb::BootLoader!
   # Otherwise it load in bad time and everything collapse!
-  orm = Merb.orm_generator_scope
-  require "merb-fixtures/kernel.rb"
-  require "merb-fixtures/fixture.rb"
-  require "merb-fixtures/helpers.rb"
-  require "merb-fixtures/#{orm}/#{orm}"
+  ORM = Merb.orm_generator_scope
+  require "merb-fixtures/shared/kernel.rb"
+  require "merb-fixtures/shared/fixture.rb"
+  require "merb-fixtures/shared/helpers.rb"
+  require "merb-fixtures/shared/extensions.rb"
+  require "merb-fixtures/#{ORM}/#{ORM}"
   
   Merb::BootLoader.before_app_loads do
     # require code that must be loaded before the application
@@ -30,5 +31,5 @@ if defined?(Merb::Plugins)
     end
   end
   
-  Merb::Plugins.add_rakefiles "merb-fixtures/merbtasks"
+  Merb::Plugins.add_rakefiles "merb-fixtures/#{ORM}/merbtasks"
 end
