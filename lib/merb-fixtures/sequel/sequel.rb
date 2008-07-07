@@ -1,1 +1,1 @@
-Sequel::Model.send(:include, Merb::Fixtures)
+Sequel::Model.send(:include, Merb::Fixtures::Extensions)
