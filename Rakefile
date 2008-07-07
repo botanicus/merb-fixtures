@@ -7,11 +7,11 @@ require 'merb-core/version'
 require 'merb-core/tasks/merb_rake_helper'
 
 NAME = "merb-fixtures"
-GEM_VERSION = "0.0.1"
+GEM_VERSION = "0.9.4"
 AUTHOR = "Jakub Šťastný"
 EMAIL = Base64.decode64("a25hdmEuYmVzdHZpbmVuc2lAZ21haWwuY29t\n")
 HOMEPAGE = "http://botablog.cz/"
-SUMMARY = "Merb plugin that provides flexible fixtures system. At the moment only DataMapper is supported."
+SUMMARY = "Merb plugin that provides flexible fixtures system. DataMapper, ActiveRecord and Sequel is supported."
 
 spec = Gem::Specification.new do |s|
   s.rubyforge_project = 'merb'
@@ -28,7 +28,6 @@ spec = Gem::Specification.new do |s|
   s.add_dependency('merb', '>= 0.9.4')
   s.require_path = 'lib'
   s.files = %w(LICENSE README Rakefile TODO) + Dir.glob("{lib,spec}/**/*")
-  
 end
 
 Rake::GemPackageTask.new(spec) do |pkg|
@@ -48,10 +47,8 @@ task :make_spec do
 end
 
 namespace :jruby do
-
   desc "Run :package and install the resulting .gem with jruby"
   task :install => :package do
     sh %{#{sudo} jruby -S gem install #{install_home} pkg/#{NAME}-#{GEM_VERSION}.gem --no-rdoc --no-ri}
   end
-
 end
