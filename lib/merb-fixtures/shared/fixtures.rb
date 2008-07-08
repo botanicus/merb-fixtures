@@ -25,7 +25,7 @@ module Merb
       return models.compact.flatten
     end
     
-    def self.save_all
+    def self.save
       Merb::Fixtures.all.each { |fixture| fixture.save }
     end
   end
