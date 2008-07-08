@@ -8,28 +8,20 @@ if defined?(Merb::Plugins)
   
   require "merb-fixtures/shared/kernel.rb"
   require "merb-fixtures/shared/fixture.rb"
+  require "merb-fixtures/shared/fixtures.rb"
   require "merb-fixtures/shared/helpers.rb"
   require "merb-fixtures/shared/extensions.rb"
   require "merb-fixtures/shared/orm.rb"
+  require "merb-fixtures/shared/errors.rb"
   require "merb-fixtures/#{ORM}/#{ORM}"
   
   # Fixture loading
   Merb::BootLoader.after_app_loads do
     if Merb::Plugins.config[:fixtures][:autoload]
-      Merb.logger.debug("Loading fixtures ...")
-      unless Merb.env?("production")
-        directory = Merb::Plugins.config[:fixtures][:directory]
-        if File.exist?(directory)
-          Dir[directory / "*.rb"].each do |file|
-            require file
-          end
-        else
-          raise "Fixtures directory not found."
-        end
-      end
+      Merb::Fixtures.load
     end
   end
 
   # Rakefiles
-  Merb::Plugins.add_rakefiles("merb-fixtures/shared/merbtasks", "merb-fixtures/#{ORM}/merbtasks")
+  Merb::Plugins.add_rakefiles("merb-fixtures/shared/merbtasks.rake", "merb-fixtures/#{ORM}/merbtasks.rake")
 end
