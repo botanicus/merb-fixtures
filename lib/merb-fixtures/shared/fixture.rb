@@ -5,12 +5,6 @@ module Merb
   module Fixtures
     class Fixture
       # FIXME: isn't better to have it as hash?
-      def self.all
-        models = ORM.models
-        models.map! { |model| model.fixtures unless model.fixtures.empty? }
-        return models.compact.flatten
-      end
-
       def initialize
         @fixtures = Hash.new
       end

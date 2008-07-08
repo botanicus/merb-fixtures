@@ -18,5 +18,11 @@ module Merb
     def self.reload
       self.load
     end
+    
+    def self.all
+      models = ORM.models
+      models.map! { |model| model.fixtures unless model.fixtures.empty? }
+      return models.compact.flatten
+    end
   end
 end

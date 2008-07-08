@@ -1,6 +1,6 @@
 desc "Load the fixtures into database"
 task Merb::Fixtures.task(:load) => :merb_env do
-  Fixture.all.each do |fixture|
+  Merb::Fixtures.all.each do |fixture|
     if fixture.save
       puts "~ #{fixture.class} saved ..."
     else
