@@ -24,5 +24,9 @@ module Merb
       models.map! { |model| model.fixtures unless model.fixtures.empty? }
       return models.compact.flatten
     end
+    
+    def self.save_all
+      Merb::Fixtures.all.each { |fixture| fixture.save }
+    end
   end
 end
