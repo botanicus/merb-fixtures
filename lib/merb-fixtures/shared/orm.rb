@@ -13,7 +13,7 @@ module Merb
       # ==== Returns
       # Array[Class]:: Array of model classes.
       # 
-      # @public
+      # @semipublic
       def self.models(orm = ::ORM)
         models = Array.new
         case orm
@@ -55,7 +55,7 @@ module Merb
       # ==== Returns
       # String:: Name of task. For example dm:db:fixtures:load
       # 
-      # @public
+      # @semipublic
       def self.task(taskname, orm = ::ORM)
         case orm
         when :datamapper   : "dm:db:fixtures:#{taskname}"
