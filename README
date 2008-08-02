@@ -1,5 +1,5 @@
 === About ===
-Fixtures is Merb plugin which provides fixture system for Merb. At this time only DataMapper is supported. Is quite different than Rails fixtures:
+Fixtures is Merb plugin which provides fixture system for Merb.
   1) Fixtures are written in Ruby, not in YAML, so it's more powerful than YAML one. For example it's much easier to add HABTM relationships.
   2) Fixtures aren't just for testing, but they are useful for development and even for migrations
 
