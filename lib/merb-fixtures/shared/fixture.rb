@@ -22,6 +22,10 @@ module Merb
       def objects
         @fixtures.values
       end
+      
+      def keys_with_objects
+        @fixtures
+      end
     end
   end
 end
