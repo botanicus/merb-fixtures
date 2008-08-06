@@ -13,7 +13,7 @@ if defined?(Merb::Plugins)
   # TODO: send a Merb patch for this
   Merb::Plugins.config[:fixtures] = default.merge(Merb::Plugins.config[:fixtures])
   
-  require "merb-fixtures/shared/errors"
+  require "merb-fixtures/shared/exceptions"
   require "merb-fixtures/shared/kernel"
   require "merb-fixtures/shared/fixture"
   require "merb-fixtures/shared/fixtures"
