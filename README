@@ -4,7 +4,7 @@ Fixtures is Merb plugin which provides fixture system for Merb.
   2) Fixtures aren't just for testing, but they are useful for development and even for migrations
 
 === Setup ===
-git clone git://github.com:botanicus/merb-fixtures.git
+git clone git://github.com/botanicus/merb-fixtures.git
 cd merb-fixtures
 rake install
 
