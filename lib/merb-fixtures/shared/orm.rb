@@ -38,31 +38,6 @@ module Merb
         end
         return models
       end
-      
-      # Get name of rake task
-      # 
-      # ==== Parameters
-      # taskname<Symbol>::
-      #   Name of task. For example :load.
-      # orm<Symbol>::
-      #   Name of ORM. The ORM choosen in use_orm is used by default.
-      #   Possibilities: :datamapper, :activerecord or :sequel
-      #
-      # ==== Example
-      # Merb::Fixtures::ORM.task(:load) => dm:db:fixtures:load # Default ORM was DataMapper
-      # Merb::Fixtures::ORM.task(:load, :sequel) => sequel:db:fixtures:load
-      # 
-      # ==== Returns
-      # String:: Name of task. For example dm:db:fixtures:load
-      # 
-      # @semipublic
-      def self.task(taskname, orm = ::ORM)
-        case orm
-        when :datamapper   : "dm:db:fixtures:#{taskname}"
-        when :sequel       : "sequel:db:fixtures:#{taskname}"
-        when :activerecord : "db:fixtures:#{taskname}"
-        end
-      end
     end
   end
 end
