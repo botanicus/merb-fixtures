@@ -20,9 +20,7 @@ module Merb
     end
     
     def self.all
-      models = ORM.models
-      models.map! { |model| model.fixtures unless model.fixtures.empty? }
-      return models.compact.flatten
+      ORM.models.map { |model| model.fixtures unless model.fixtures.empty? }.compact.flatten
     end
     
     def self.save

@@ -1,4 +1,10 @@
 if defined?(Merb::Plugins)
+  def require_fixtures
+    libraries = %w(exceptions kernel fixture fixtures helpers extensions orm)
+    libraries.each { |library| require "merb-fixtures/shared/#{library}" }
+    require "merb-fixtures/#{ORM}/#{ORM}"
+  end
+
   # Configuration and initialization
   # For development - you can use dependency "/Users/..."
   # Why it isn't done automatically? "." really is in load paths,
@@ -15,24 +21,16 @@ if defined?(Merb::Plugins)
   
   # Fixture loading
   Merb::BootLoader.after_app_loads do
-    require "merb-fixtures/shared/exceptions"
-    require "merb-fixtures/shared/kernel"
-    require "merb-fixtures/shared/fixture"
-    require "merb-fixtures/shared/fixtures"
-    require "merb-fixtures/shared/helpers"
-    require "merb-fixtures/shared/extensions"
-    require "merb-fixtures/shared/orm"
-    require "merb-fixtures/#{ORM}/#{ORM}"
+    require_fixtures
     if Merb::Plugins.config[:fixtures][:autoload]
       Merb::Fixtures.load
     end
   end
 
   # Rakefiles
-  # FIXME
-  if Pathname($0).basename.to_s.eql?("rake")
-    require "merb-fixtures/shared/merbtasks"
-    require "merb-fixtures/#{ORM}/merbtasks"
-  end
   Merb::Plugins.add_rakefiles("merb-fixtures/shared/merbtasks", "merb-fixtures/#{ORM}/merbtasks")
+  # It couldn't works, it can work just after app load
+  # if Pathname($0).basename.to_s.eql?("rake")
+  #   require_fixtures
+  # end
 end
