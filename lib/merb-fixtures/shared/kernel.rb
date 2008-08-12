@@ -32,6 +32,6 @@ module Kernel
   # fixture(:answer)
   # fixture(:answer, :ruby)
   def load_fixtures(fixture)
-    load Merb::Plugins.config[:fixtures][:directory] / fixture.to_s
+    load Merb::Plugins.config[:fixtures][:directory] / fixture.to_s / ".rb"
   end
 end
