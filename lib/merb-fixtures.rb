@@ -1,5 +1,5 @@
 if defined?(Merb::Plugins)
-  def require_fixtures
+  def require_fixture_files
     libraries = %w(exceptions kernel fixture fixtures helpers extensions orm)
     libraries.each { |library| require "merb-fixtures/shared/#{library}" }
     require "merb-fixtures/#{ORM}/#{ORM}"
@@ -21,7 +21,7 @@ if defined?(Merb::Plugins)
   
   # Fixture loading
   Merb::BootLoader.after_app_loads do
-    require_fixtures
+    require_fixture_files
     if Merb::Plugins.config[:fixtures][:autoload]
       Merb::Fixtures.load
     end
@@ -31,6 +31,6 @@ if defined?(Merb::Plugins)
   Merb::Plugins.add_rakefiles("merb-fixtures/shared/merbtasks", "merb-fixtures/#{ORM}/merbtasks")
   # It couldn't works, it can work just after app load
   # if Pathname($0).basename.to_s.eql?("rake")
-  #   require_fixtures
+  #   require_fixture_files
   # end
 end

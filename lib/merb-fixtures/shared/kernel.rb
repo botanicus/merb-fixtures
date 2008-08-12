@@ -33,15 +33,15 @@ module Kernel
   # fixture(:answer, :ruby)
   # Do NOT use this in your fixture files!
   def load_fixtures(*fixtures)
-    do_some_with_fixtures do |directory, fixture|
-      load directory / fixture
+    do_some_with_fixtures(fixtures) do |directory, fixture|
+      load directory/fixture
     end
   end
   
   # Use it in your fixture files
   def require_fixtures(*fixtures)
-    do_some_with_fixtures do |directory, fixture|
-      require directory / fixture
+    do_some_with_fixtures(fixtures) do |directory, fixture|
+      require directory/fixture
     end
   end
   
