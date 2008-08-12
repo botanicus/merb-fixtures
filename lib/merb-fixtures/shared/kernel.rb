@@ -26,4 +26,12 @@ module Kernel
     klass.fixture.create(name, instance)
     return instance
   end
+  
+  # Great for test/spec:
+  # Load answer.rb fixture:
+  # fixture(:answer)
+  # fixture(:answer, :ruby)
+  def load_fixtures(fixture)
+    load Merb::Plugins.config[:fixtures][:directory] / fixture.to_s
+  end
 end

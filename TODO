@@ -1,4 +1,5 @@
 - Documentation
-- Tasks doen't work
 - Update specs
+- Anonymous fixtures
+- Fixtures dependencies (because of HABTM)
 - Do specs for tasks
