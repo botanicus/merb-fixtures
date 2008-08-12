@@ -31,7 +31,26 @@ module Kernel
   # Load answer.rb fixture:
   # fixture(:answer)
   # fixture(:answer, :ruby)
-  def load_fixtures(fixture)
-    load Merb::Plugins.config[:fixtures][:directory] / fixture.to_s / ".rb"
+  # Do NOT use this in your fixture files!
+  def load_fixtures(*fixtures)
+    do_some_with_fixtures do |directory, fixture|
+      load directory / fixture
+    end
+  end
+  
+  # Use it in your fixture files
+  def require_fixtures(*fixtures)
+    do_some_with_fixtures do |directory, fixture|
+      require directory / fixture
+    end
+  end
+  
+  private
+  def do_some_with_fixtures(fixtures, &block)
+    fixtures.each do |fixture|
+      directory = Merb::Plugins.config[:fixtures][:directory]
+      fixture   = "#{fixture}.rb"
+      block.call(directory, fixture)
+    end
   end
 end
