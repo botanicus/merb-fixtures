@@ -48,3 +48,27 @@ migration 1, "Add default author" do
     # foo
   end
 end
+
+=== FAQ ===
+
+== HABTM ==
+# TODO: describe different types of associations
+class ModelOne
+  has 0..n, :model_two
+end
+
+class ModelTwo
+  belongs_to :model_one
+  # model_one_id
+end
+
+fixture_for(ModelOne, :one) do
+  # foo bar
+end
+
+load_fixtures :model_one
+fixture_for(ModelTwo, :two) do
+  self.model_one = ModelOne.fixture(:model_one)
+end
+
+1) save ModelOne
