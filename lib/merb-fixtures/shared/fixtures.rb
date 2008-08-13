@@ -7,7 +7,6 @@ module Merb
           directory = Merb::Plugins.config[:fixtures][:directory]
           if File.exist?(directory)
             Dir[directory/"*.rb"].each do |file|
-              # It's important to not use just load, remember the namespace
               Kernel.load(file)
             end
           else
@@ -19,11 +18,13 @@ module Merb
       alias :reload :load
       
       def all
-        ORM.models.map { |model| model.fixtures unless model.fixtures.empty? }.compact.flatten
+        output = Hash.new
+        ORM.models.each { |model| output.merge!(model.fixtures.objects) unless model.fixtures.objects.values.empty? }
+        return output
       end
-
+      
       def save
-        Merb::Fixtures.all.each { |fixture| fixture.save }
+        Merb::Fixtures.all.each { |name, fixture| fixture.save rescue raise "Fixture #{name} (model #{fixture.class}) couldn't be saved!"}
       end
     end
   end

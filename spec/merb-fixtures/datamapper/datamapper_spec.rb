@@ -15,7 +15,7 @@ describe "<model>" do
   before(:each) do
     @botanicus = Author.new
     @fixtures  = Array(@botanicus)
-    Author.fixture.create(:botanicus, @botanicus)
+    Author.get_fixture.create(:botanicus, @botanicus)
   end
   
   describe ".fixture" do

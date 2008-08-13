@@ -8,19 +8,27 @@ module Merb
       end
     
       module ClassMethods
-        # Get fixture:
         # Post.fixture(:botanicus)
-        # Create fixture:
-        # Post.fixture.create(:botanicus, Author.new)
-        def fixture(name = nil)
-          @fixture ||= Merb::Fixtures::Fixture.new
+        def fixture(name)
+          self.init
           name ? @fixture.load(name) : @fixture
         end
+        
+        # Post.get_fixture.create(:botanicus, Author.new)
+        def get_fixture
+          self.init
+          return @fixture
+        end
       
-        # Post.fixtures => [#<Post...>, ...]
+        # Post.fixtures => {:name => object}
         def fixtures
+          self.init
+          return @fixture
+        end
+        
+        protected
+        def init
           @fixture ||= Merb::Fixtures::Fixture.new
-          return @fixture.objects
         end
       end
     end

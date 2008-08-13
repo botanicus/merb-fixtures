@@ -19,11 +19,11 @@ module Kernel
   # end
   # - 
   # @public
-  def fixture_for(klass, name, &block)
+  def fixture_for(klass, name = nil, &block)
     include Merb::Fixtures::Helpers if Merb::Plugins.config[:fixtures]
     instance = klass.new # Post.new
     instance.instance_eval(&block) if block_given?
-    klass.fixture.create(name, instance)
+    klass.get_fixture.create(name, instance)
     return instance
   end
   

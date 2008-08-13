@@ -1,10 +1,8 @@
-# Better will be creating one instance per object (one for Post, one for Author ... )
 require "merb-fixtures/shared/orm"
 
 module Merb
   module Fixtures
     class Fixture
-      # FIXME: isn't better to have it as hash?
       def initialize
         @fixtures = Hash.new
       end
@@ -20,10 +18,6 @@ module Merb
       end
   
       def objects
-        @fixtures.values
-      end
-      
-      def keys_with_objects
         @fixtures
       end
     end
