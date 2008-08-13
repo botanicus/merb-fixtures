@@ -23,7 +23,7 @@ module Merb
         # Post.fixtures => {:name => object}
         def fixtures
           self.init
-          return @fixture
+          return @fixture.objects
         end
         
         protected

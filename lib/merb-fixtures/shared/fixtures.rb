@@ -19,7 +19,7 @@ module Merb
       
       def all
         output = Hash.new
-        ORM.models.each { |model| output.merge!(model.fixtures.objects) unless model.fixtures.objects.values.empty? }
+        ORM.models.each { |model| output.merge!(model.fixtures) unless model.fixtures.values.empty? }
         return output
       end
       
