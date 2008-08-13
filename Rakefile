@@ -7,7 +7,7 @@ require 'merb-core/version'
 require 'merb-core/tasks/merb_rake_helper'
 
 NAME = "merb-fixtures"
-GEM_VERSION = "0.9.4"
+GEM_VERSION = "0.9.5"
 AUTHOR = "Jakub Šťastný"
 EMAIL = Base64.decode64("a25hdmEuYmVzdHZpbmVuc2lAZ21haWwuY29t\n")
 HOMEPAGE = "http://botablog.cz/"

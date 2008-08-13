@@ -18,11 +18,11 @@ module Merb
 
       alias :reload :load
       
-      def self.all
+      def all
         ORM.models.map { |model| model.fixtures unless model.fixtures.empty? }.compact.flatten
       end
 
-      def self.save
+      def save
         Merb::Fixtures.all.each { |fixture| fixture.save }
       end
     end
