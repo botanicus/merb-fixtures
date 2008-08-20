@@ -11,7 +11,7 @@ if defined?(Merb::Plugins)
   # but require is done from /usr/bin/merb and "." is /usr/bin
   # ... at least I think so :)
   $: << File.dirname(__FILE__)
-  ORM = Merb.orm_generator_scope
+  ORM = Merb.orm
   default = {
     :directory => Merb.root / "app" / "fixtures",
     :autoload  => true,
